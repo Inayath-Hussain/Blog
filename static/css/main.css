@@ -1,0 +1,283 @@
+body {
+    background-color: #1f1f1f;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 900px;
+    margin: auto;
+    align-content: center;
+}
+
+input {
+    background-color: #d4d4d4;
+    border-radius: 10px;
+    border-style: solid;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+
+input[type=text] {
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+
+textarea {
+    background-color: #d4d4d4;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    display: block;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.homecontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.blogs {
+    padding: 20px;
+    /* max-width: 900px;
+    margin: auto;
+    align-content: center; */
+    background-color: #d4d4d4;
+    border-radius: 10px;
+    margin-top: 30px;
+    color: black;
+    width: 600px;
+}
+
+.blogs:hover {
+    /* max-width: 900px; */
+    cursor: pointer;
+    background-color: #f5ac47;
+    color: #fff;
+}
+
+.comments {
+    padding: 20px;
+    /* max-width: 900px;
+    margin: auto;
+    align-content: center; */
+    background-color: #d4d4d4;
+    border-radius: 10px;
+    margin-top: 30px;
+    color: black;
+    width: 600px;
+}
+
+.comments:hover {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 30px;
+}
+
+.login {
+    background-color: #d4d4d4;
+    border-radius: 10px;
+    margin-top: 60px;
+    margin-left: 120px;
+    color: black;
+    padding: 20px;
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+}
+
+.login p {
+    margin-left: 50px;
+}
+
+.createpost {
+    background-color: #d4d4d4;
+    border-radius: 10px;
+    margin-top: 60px;
+    color: black;
+    padding: 20px;
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    max-width: 900px;
+}
+
+.createpost input {
+    background-color: #d4d4d4;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    display: block;
+    font-size: large;
+}
+
+.createpost textarea {
+    background-color: #d4d4d4;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    display: block;
+    border-style: solid;
+}
+
+#createbutton {
+    width: fit-content;
+    margin-left: 360px;
+    margin-top: 30px;
+    border-radius: 10px;
+    border-width: 1px;
+}
+
+#createbutton:hover {
+    background-color: #f5ac47;
+    color: #d4d4d4;
+    cursor: pointer;
+}
+
+.deletepost {
+    background-color: #d4d4d4;
+    border-radius: 10px;
+    margin-top: 60px;
+    margin-left: 120px;
+    color: black;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+}
+
+.deletepost a {
+    margin-top: 20px;
+    width: 80%;
+}
+
+.deletepost input:hover {
+    background-color: #f5ac47;
+    color: #d4d4d4;
+    cursor: pointer;
+}
+
+.deletepost a input {
+    background-color: #d4d4d4;
+    border-radius: 10px;
+    border-style: solid;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    /* max-width: 900px;
+    margin: auto;
+    align-content: center; */
+}
+
+.blog {
+    padding: 40px;
+}
+
+nav {
+    color: #fff;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav:hover {
+    background-color: #f5a83d;
+}
+
+nav a:hover {
+    color: #1f1f1f;
+}
+
+.button {
+    border: 1px solid;
+    background-color: #d4d4d4;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    max-width: 80px;
+    margin-left: 240px;
+}
+
+.button:hover {
+    color: beige;
+    background-color: #f5ac47;
+}
+
+.loginform {
+    /* display: flex; */
+    align-items: center;
+}
+
+.loginheader {
+    display: flex;
+    justify-content: center;
+}
+
+.loginformlink {
+    margin-top: 10px;
+    color: #1f1f1f;
+}
+
+.loginformlink:hover {
+    color: #f5ac47;
+}
+
+.register {
+    background-color: #d4d4d4;
+    border-radius: 10px;
+    margin-top: 60px;
+    margin-left: 120px;
+    color: black;
+    padding: 20px;
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+}
+
+.register input {
+    display: block;
+}
+
+.register p {
+    margin-left: 30px;
+    display: block;
+}

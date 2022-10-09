@@ -1,0 +1,30 @@
+{% extends 'blog_app/main.html' %}
+{% block content %}
+
+<nav>
+    {% if request.user.username %}
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'postblog' %}">Create a Blog</a>
+    <a href="{% url 'logout' %}">Logout</a>
+    {% endif %}
+</nav>
+
+<div class="header">
+    <p>Hello {{request.user.username | title}}</p>
+</div>
+{% for item in blogs %}
+<a href="{% url 'detail-userblog' item.id %}">
+    <div class="blogs">
+        <h3>{{item.title}}</h3>
+        <p>{{item.created_at}}</p>
+        <!-- {% for comment in item.comments.all %}
+        {{comment.owner}}
+        {{comment.comment}}
+        {% endfor %} -->
+    </div>
+        {% endfor %}
+
+</a>
+
+
+{% endblock content %}

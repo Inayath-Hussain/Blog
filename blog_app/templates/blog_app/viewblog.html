@@ -1,0 +1,39 @@
+{% extends 'blog_app/main.html' %}
+{% block content %}
+
+<nav>
+    {% if request.user.username %}
+    <a href="{% url 'list-userblog' %}">My Blogs</a>
+    <a href="{% url 'postblog' %}">Create a Blog</a>
+    {% if request.user == blog.owner %}
+    <a href="{% url 'deleteblog' blog.id %}">Delete this blog</a>
+    {% endif %}
+    <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'register' %}">Register</a>
+    {% endif %}
+</nav>
+
+<div class="header">
+    <h2>{{blog.title}}</h2>
+</div>
+<div class="details">
+    <p> Posted at {{blog.created_at}}</p>
+    <p> -by {{blog.owner}}</p>
+
+</div>
+<div class="blog">
+    {{blog.blog}}
+
+</div>
+<h4>Comments</h4>
+{% for comment in blog.comments.all %}
+<div class="comments">
+    <p>{{comment.comment}}</p>
+    <p style="justify-content: right;display:flex;"> -commented by {{comment.owner}}</p>
+    
+</div>
+{% endfor %}
+
+{% endblock content %}

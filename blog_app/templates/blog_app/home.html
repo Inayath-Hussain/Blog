@@ -1,0 +1,33 @@
+{% extends 'blog_app/main.html' %}
+{% block content %}
+
+<nav>
+    {% if request.user.username %}
+    <a href="{% url 'list-userblog' %}">My Blogs</a>
+    <a href="{% url 'postblog' %}">Create a Blog</a>
+    <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'register' %}">Register</a>
+    {% endif %}
+</nav>
+
+<div class="header">
+    <p>Hello {{request.user.username | title}}</p>
+</div>
+
+{% for blog in blogs %}
+<div class="homecontainer">
+    <a href="{% url 'detail-blog' blog.id %}">
+        <div class="blogs">
+            <h3 style="justify-content: center;">{{blog.title}}</h3>
+            <p style="justify-content: right; display: flex;">-by {{blog.owner}}</p>
+        </div>
+    
+    </a>
+
+</div>
+
+{% endfor %}
+
+{% endblock content %}
