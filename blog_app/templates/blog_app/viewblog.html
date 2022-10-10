@@ -2,6 +2,7 @@
 {% block content %}
 
 <nav>
+    <a href="{% url 'home' %}">Go Back</a>
     {% if request.user.username %}
     <a href="{% url 'list-userblog' %}">My Blogs</a>
     <a href="{% url 'postblog' %}">Create a Blog</a>
@@ -20,7 +21,7 @@
 </div>
 <div class="details">
     <p> Posted at {{blog.created_at}}</p>
-    <p> -by {{blog.owner}}</p>
+    <p> -by {{blog.owner.username}}</p>
 
 </div>
 <div class="blog">
@@ -28,12 +29,27 @@
 
 </div>
 <h4>Comments</h4>
-{% for comment in blog.comments.all %}
+{% for comment in comments %}
 <div class="comments">
     <p>{{comment.comment}}</p>
-    <p style="justify-content: right;display:flex;"> -commented by {{comment.owner}}</p>
+    <p style="justify-content: right;display:flex;"> -commented by {{comment.owner.username}}</p>
     
 </div>
+{% if comment.owner == request.user %}
+    <a href="{% url 'deletecomment' blog.id comment.id  %}">
+        <input type="submit" class="button" value="Delete">
+
+    </a>
+
+{% endif %}
 {% endfor %}
+
+<div class="commentform">
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="comment">
+    </form>
+</div>
 
 {% endblock content %}

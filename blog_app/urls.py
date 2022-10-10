@@ -11,5 +11,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(next_page='home'), name='logout'),
     path('register/', views.BlogRegistrationView.as_view(), name='register'),
     path('postblog/', views.postblog, name='postblog'),
-    path('deleteblog/<int:pk>', views.deleteblog, name='deleteblog')
+    path('deleteblog/<int:pk>/', views.deleteblog, name='deleteblog'),
+    path('deletecomment/<int:b>/<int:pk>',
+         views.deletecomment, name='deletecomment')
 ]

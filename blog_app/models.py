@@ -14,7 +14,7 @@ class BlogPost(models.Model):
     # image
 
     class Meta:
-        ordering = ['created_at']
+        ordering = ['-created_at']
 
 
 class Comments(models.Model):
@@ -23,3 +23,7 @@ class Comments(models.Model):
     comment = models.TextField()
     blog = models.ForeignKey(BlogPost,
                              on_delete=models.CASCADE, related_name='comments')
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+
+    class Meta:
+        ordering = ['-created_at']

@@ -21,7 +21,7 @@
     <a href="{% url 'detail-blog' blog.id %}">
         <div class="blogs">
             <h3 style="justify-content: center;">{{blog.title}}</h3>
-            <p style="justify-content: right; display: flex;">-by {{blog.owner}}</p>
+            <p style="justify-content: right; display: flex;">-by {{blog.owner.username}}</p>
         </div>
     
     </a>

@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.views.generic import FormView
 from .models import BlogPost, Comments
-from .forms import CreateForm
+from .forms import CreateForm, CommentForm
 from users import forms
 
 
@@ -38,17 +38,25 @@ class BlogRegistrationView(FormView):
 
 @login_required
 def listuserblogs(request):
-    blogs = BlogPost.objects.prefetch_related(
-        'comments').filter(owner=request.user)
+    blogs = BlogPost.objects.filter(owner=request.user)
     context = {'blogs': blogs}
     return render(request, 'blog_app/listuserblog.html', context)
 
 
 @login_required
 def detailuserblogs(request, pk):
-    blog = BlogPost.objects.prefetch_related(
-        'comments').filter(owner=request.user).get(id=pk)
-    context = {'blog': blog}
+    blog = BlogPost.objects.filter(
+        owner=request.user).select_related('owner').get(id=pk)
+    comment = Comments.objects.filter(blog=blog).select_related('owner')
+    form = CommentForm()
+    context = {'blog': blog, 'comments': comment, 'form': form}
+
+    if request.method == 'POST':
+        extra_fields = Comments(owner=request.user, blog=blog)
+        form = CommentForm(request.POST, instance=extra_fields)
+        if form.is_valid():
+            form.save()
+            return redirect('detail-userblog')
     return render(request, 'blog_app/viewuserblog.html', context)
 
 
@@ -79,13 +87,36 @@ def deleteblog(request, pk):
 
 
 def listblogs(request):
-    blogs = BlogPost.objects.all()
+    blogs = BlogPost.objects.select_related('owner').all()
     context = {'blogs': blogs}
     return render(request, 'blog_app/home.html', context)
 
 
 def detailblogs(request, pk):
+    blog = BlogPost.objects.prefetch_related('owner').get(id=pk)
+    comment = Comments.objects.filter(blog=blog).select_related('owner')
     if request.method == 'GET':
-        blog = BlogPost.objects.get(id=pk)
-        context = {'blog': blog}
+        form = CommentForm()
+        context = {'blog': blog, 'form': form, 'comments': comment}
+
+    if request.method == 'POST':
+        if not request.user.is_authenticated:
+            return redirect('login')
+
+        form = CommentForm(request.POST)
+        extra_fields = Comments(owner=request.user, blog=blog)
+        form = CommentForm(request.POST, instance=extra_fields)
+        if form.is_valid():
+            form.save()
+            return redirect('detail-blog', pk=pk)
     return render(request, 'blog_app/viewblog.html', context)
+
+
+def deletecomment(request, b, pk):
+    comment = Comments.objects.get(id=pk)
+    context = {'comment': comment}
+
+    if request.method == 'POST':
+        comment.delete()
+        return redirect('detail-blog', pk=b)
+    return render(request, 'blog_app/deletecomment.html', context)

@@ -2,6 +2,7 @@
 {% block content %}
 
 <nav>
+    <a href="{% url 'list-userblog' %}">Go Back</a>
     {% if request.user.username %}
     <a href="{% url 'home' %}">Home</a>
     <a href="{% url 'postblog' %}">Create a Blog</a>
@@ -23,12 +24,18 @@
 
 </div>
 <h4>Comments</h4>
-{% for comment in blog.comments.all %}
+{% for comment in comments %}
 <div class="comments">
     <p>{{comment.comment}}</p>
     <p style="justify-content: right;display:flex;"> -commented by {{comment.owner}}</p>
     
 </div>
 {% endfor %}
+
+<form class="commentform" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="comment">
+</form>
 
 {% endblock content %}

@@ -5,6 +5,7 @@ body {
     max-width: 900px;
     margin: auto;
     align-content: center;
+    margin-bottom: 40px;
 }
 
 input {
@@ -79,9 +80,9 @@ textarea {
 }
 
 .comments:hover {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 30px;
+    /* margin-top: 10px;
+    margin-bottom: 10px; */
+    padding: 25px;
 }
 
 .login {
@@ -189,6 +190,25 @@ textarea {
     width: 100%;
 }
 
+.deletecomment {
+    background-color: #d4d4d4;
+    color: #1f1f1f;
+    margin-top: 40px;
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.deletecomment input:hover {
+    background-color: #f5ac47;
+    color: #d4d4d4;
+    cursor: pointer;
+    border: solid;
+    font-weight: bold;
+}
+
 a {
     text-decoration: none;
 }
@@ -240,6 +260,45 @@ nav a:hover {
     color: beige;
     background-color: #f5ac47;
 }
+
+.commentform p {
+    margin-top: 60px;
+}
+
+.commentform input {
+    width: fit-content;
+    font-weight: bold;
+}
+
+.commentform input:hover {
+    background-color: #f5ac47;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* .commentbtn {
+    border: 1px solid;
+    background-color: #d4d4d4;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    max-width: 80px;
+    margin-left: 240px;
+    margin-bottom: 30px;
+
+
+    border-style: solid;
+
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    align-items: center;
+}
+
+.commentbtn:hover {
+    color: beige;
+    background-color: #f5ac47;
+} */
 
 .loginform {
     /* display: flex; */

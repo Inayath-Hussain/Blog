@@ -1,0 +1,21 @@
+{% extends 'blog_app/main.html' %}
+{% block content %}
+
+<div class="deletecomment">
+    <form method="post">
+        {% csrf_token %}
+        <p style="display: block;">Delete your comment?</p>
+        <div class="deletecommentbtns">
+            <input type="submit" value="Yes" >
+            <a href="{% url 'detail-blog' comment.blog.id %}" >
+                <input type="button" value="No" style="margin-top: 20px;">
+            </a>
+
+        </div>
+    
+    </form>
+
+</div>
+
+
+{% endblock content %}
