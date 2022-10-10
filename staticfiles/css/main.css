@@ -150,7 +150,8 @@ textarea {
 
 #createbutton:hover {
     background-color: #f5ac47;
-    color: #d4d4d4;
+    color: #fff;
+    border: 0;
     cursor: pointer;
 }
 
@@ -276,32 +277,9 @@ nav a:hover {
     cursor: pointer;
 }
 
-/* .commentbtn {
-    border: 1px solid;
-    background-color: #d4d4d4;
-    padding: 10px;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer;
-    max-width: 80px;
-    margin-left: 240px;
-    margin-bottom: 30px;
-
-
-    border-style: solid;
-
-    font-family: Arial, Helvetica, sans-serif;
-    justify-content: center;
-    align-items: center;
-}
-
-.commentbtn:hover {
-    color: beige;
-    background-color: #f5ac47;
-} */
 
 .loginform {
-    /* display: flex; */
+
     align-items: center;
 }
 
@@ -339,4 +317,16 @@ nav a:hover {
 .register p {
     margin-left: 30px;
     display: block;
+}
+
+.search-bar {
+    margin-left: 130px;
+}
+
+.search-bar input {
+    width: fit-content;
+}
+
+.search-bar .button {
+    margin-left: 0px;
 }
