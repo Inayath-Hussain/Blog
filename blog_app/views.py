@@ -39,7 +39,10 @@ class BlogRegistrationView(FormView):
 @login_required
 def listuserblogs(request):
     blogs = BlogPost.objects.filter(owner=request.user)
-    context = {'blogs': blogs}
+    search_input = request.GET.get('search-area') or ''
+    if search_input:
+        blogs = blogs.filter(title__icontains=search_input)
+    context = {'blogs': blogs, 'search_input': search_input}
     return render(request, 'blog_app/listuserblog.html', context)
 
 
@@ -88,7 +91,10 @@ def deleteblog(request, pk):
 
 def listblogs(request):
     blogs = BlogPost.objects.select_related('owner').all()
-    context = {'blogs': blogs}
+    search_input = request.GET.get('search-area') or ''
+    if search_input:
+        blogs = blogs.filter(title__icontains=search_input)
+    context = {'blogs': blogs, 'search_input': search_input}
     return render(request, 'blog_app/home.html', context)
 
 

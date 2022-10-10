@@ -16,7 +16,7 @@
 </div>
 <div class="details">
     <p> Posted at {{blog.created_at}}</p>
-    <p> -by {{blog.owner}}</p>
+    <p> -by {{blog.owner.username}}</p>
 
 </div>
 <div class="blog">
@@ -27,7 +27,7 @@
 {% for comment in comments %}
 <div class="comments">
     <p>{{comment.comment}}</p>
-    <p style="justify-content: right;display:flex;"> -commented by {{comment.owner}}</p>
+    <p style="justify-content: right;display:flex;"> -commented by {{comment.owner.username}}</p>
     
 </div>
 {% endfor %}
